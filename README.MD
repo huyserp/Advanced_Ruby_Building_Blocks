@@ -1,4 +1,5 @@
 Assignment 1
+
 Build a method #bubble_sort that takes an array and returns a sorted array. It must use the bubble sort methodology (using #sort would be pretty pointless, wouldn’t it?).
 
 > bubble_sort([4,3,78,2,0,2])
@@ -13,6 +14,7 @@ Now create a similar method called #bubble_sort_by which sorts an array by accep
 
 
 Assignment 2
+
 Create a script file to house your methods and run it in IRB to test them later.
 Add your new methods onto the existing Enumerable module. Ruby makes this easy for you because any class or module can be added to without trouble … just do something like:
 
