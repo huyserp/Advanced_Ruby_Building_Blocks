@@ -69,15 +69,29 @@ module Enumerable
     end
 
     def my_count(arg=nil)
-        
-        if arg == nil
-            return self.length
-        elsif arg != nil
+        count = 0
 
-
-            
+        if block_given?
+            i = 0
+            while i < self.length
+                if yield(self[i]) == true
+                    count += 1
+                end
+                i += 1
+            end
+            return count
         end
 
+        if arg == nil
+            return self.length
+        else
+            self.my_each do |x|
+                if x == arg
+                    count += 1
+                end
+            end
+            return count
+        end
     end
 
     def my_map
@@ -90,7 +104,13 @@ module Enumerable
         return result_array
     end
 
-    def my_inject
+    def my_inject(value=self[0])
+        i = 0
+        while i < self.length
+           value = yield(value, self[i])
+            i += 1
+        end
+        return value
     end
 
 end
