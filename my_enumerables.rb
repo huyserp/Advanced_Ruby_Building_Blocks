@@ -70,7 +70,6 @@ module Enumerable
 
     def my_count(arg=nil)
         count = 0
-
         if block_given?
             i = 0
             while i < self.length
@@ -81,7 +80,6 @@ module Enumerable
             end
             return count
         end
-
         if arg == nil
             return self.length
         else
@@ -114,10 +112,8 @@ module Enumerable
 
     def my_inject(value=self[0])
         i = 0
-        if value == self[0]
-            i = 1
-        end
-
+        i = 1 if value == self[0]
+    
         while i < self.length
            value = yield(value, self[i])
             i += 1
