@@ -94,23 +94,39 @@ module Enumerable
         end
     end
 
-    def my_map
+    def my_map(my_proc=nil)
         result_array = []
         i = 0
-        while i < self.length
-            result_array << yield(self[i])
-            i += 1
+        if my_proc
+            while i < self.length
+                result_array << proc.call(self[i])
+                i += 1
+            end
+            return result_array
+        else
+            while i < self.length
+                result_array << yield(self[i])
+                i += 1
+            end
+            return result_array
         end
-        return result_array
     end
 
     def my_inject(value=self[0])
         i = 0
+        if value == self[0]
+            i = 1
+        end
+
         while i < self.length
            value = yield(value, self[i])
             i += 1
         end
         return value
     end
+end
 
+def multiply_els(array)
+    result = array.my_inject { |total, current| total * current }
+    return result
 end
